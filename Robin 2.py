@@ -22,13 +22,10 @@ class my_bot():
         print self.name, ": "
         print "Weight: ", self.M
         if self.M == 20:
-            F = self.random
             print "F: ", self.random
         elif self.M == 50:
-            P = self.random
             print "P: ", self.random
         elif self.M == 30:
-            E = self.random
             print "E: ", self.random
         print "Energy: ", self.energy
 
