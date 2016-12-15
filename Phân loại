@@ -1,0 +1,42 @@
+files_ngoaitru2014 <- list.files()
+require(readxl)
+ngoaitru2014 <- lapply(files_ngoaitru2014, read_excel)
+
+Mathe2 = substr(ngoaitru2014[[1]]$Mathe, 0, 3)
+new <- data.frame(Mathe2, ngoaitru2014[[1]]$T_Tongchi)
+new$percentage <- 0
+i <- 1
+while (i <= nrow(new) {
+if (substr(Mathe2[i], 3, 3) == "1" | substr(Mathe2[i], 3, 3) == "2" ) {
+    new$percentage[i] <- 100
+  }
+  else if (substr(Mathe2[i], 3, 3) == "3") {
+    if (substr(Mathe2[i], 0, 2) == "CA") {
+      new$percentage[i] <- 100
+    }
+    else {
+      new$percentage[i] <- 95
+    }
+  }
+  else if (substr(Mathe2[i], 3, 3) == "4") {
+    if (substr(Mathe2[i], 0, 2) == "HN"|substr(Mathe2[i], 3, 3) == "BT") {
+      new$percentage[i] <- 95
+    }
+    else {
+      new$percentage[i] <- 80
+    }
+  }
+  else if (substr(Mathe2[i], 3, 3) == "5") {
+    if (substr(Mathe2[i], 0, 2) == "HT") {
+      new$percentage[i] <- 95
+    }
+    else {
+      new$percentage[i] <- 100
+    }
+  }
+  else {
+    new$percentage[i] <- 80
+  }
+  i <- i + 1
+}
+
