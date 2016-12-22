@@ -1,14 +1,14 @@
 require(stringr)
 my_func <- function(code, i = 1, code_fixed = c()) {
   x <- str_split(code, "")
+  position = c()
   while (i <= str_length(code)) {
-    position = c()
     if (is.na(as.integer(x[[1]][i])) == TRUE) {
       position = append(position, i)
     }
-    code_fixed = append(code_fixed, substr(code, position[1], position[2]))
     i <- i + 1
   }
+  code_fixed = append(code_fixed, substr(code, position[1], position[2]-1))
   print(code_fixed)
 }
 my_func("R123B123") #test
