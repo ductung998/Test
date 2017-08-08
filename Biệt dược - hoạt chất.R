@@ -3,6 +3,8 @@ setwd("D:/Programming/Rstorage")
 require(stringr)
 require(data.table)
 
+#danhsach.csv: danh mục thuốc bệnh viện da liễu cung cấp trên website được em cắt ra chỉ còn hoạt chất và tên biệt dược
+#dulieutho.csv: file dữ liệu thô được em cắt ra chỉ còn tên biệt dược
 danhsach <- read.csv("danhsach.csv", sep =",")
 data <- read.csv("dulieutho.csv", sep = ",")[1]
 
@@ -22,8 +24,8 @@ for (i in 1:length(danhsach[[1]])){
 }
 
 #tách chữ đầu trong data x, tìm trong danh sách đối chiếu
-#nếu có, lấy tên hoạt chất từ số thứ tự đó trong danh sách, thêm vào cột 2 của x
-#đồng thời tách lấy chữ cuối (đa số là hàm lượng) thêm vào cột 3 của x
+#nếu có, lấy tên hoạt chất từ số thứ tự đó trong danh sách, thêm vào cột 2 của x,đồng thời
+#tách lấy chữ cuối (đa số là hàm lượng) thêm vào cột 3 của x
 #nếu không có, thêm chữ delete vào cột 2
 i <- 1
 
@@ -43,5 +45,5 @@ y <- transpose(x)
 
 write.csv(y, file ="xuat.csv")
 
-#kết quả: đc 1 file csv chứa hoạt chất + hàm lượng ứng với biệt dược để chỉnh sửa lại
-#file dữ liệu gốc
+#kết quả: đc 1 file csv chứa hoạt chất + hàm lượng ứng với biệt dược
+#với các thuốc không tra cứu được sẽ bị xóa bằng tay trong file dữ liệu gốc qua chữ "delete"
